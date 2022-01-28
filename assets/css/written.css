@@ -1,0 +1,19 @@
+#project div img{
+				width: 100%;
+				margin: auto;
+}
+
+#project{
+				width: 100vw;
+				display: grid !important;
+				grid-template-column: 45% 20% 20% !important;
+				color: red !important;
+				
+}
+
+h1{
+				margin: 0%;
+}
+
+
+

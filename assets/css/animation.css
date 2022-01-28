@@ -1,0 +1,58 @@
+
+
+/* Got this animation from an old project
+if I want to do it now i would have done it with JavaScript */
+span img{
+    animation:flash 2s ease;
+}
+
+header h1{
+    animation: text1 2.5s linear;
+}
+
+h1 strong{
+    animation: text2 3s linear;
+}
+
+
+/* animations */
+@keyframes flash{
+    0%{
+        transform: translateX(-25vw);
+        opacity: .0;
+
+    }
+    50%{
+        opacity: .3;
+    }
+    100%{
+        
+    }
+}
+
+
+@keyframes text1{
+    0%{
+        opacity: .0;
+
+    }
+    70%{
+        opacity: .0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes text2{
+    0%{
+        opacity: .0;
+
+    }
+    70%{
+        opacity: .0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
