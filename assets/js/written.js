@@ -113,4 +113,24 @@ const  observer = new IntersectionObserver((entries) => {
        
  
    })
+   
+   
+   
+function sendEmail(emailTo,subject,body) {
+    window.open(`mailto:${emailTo}?subject=${subject}&body=${body}`);
+}
+
+function getDetails() {
+    const subject = $("#subject").val(),
+        body = $("#message").val()
+        emailTo = 'winninggodspower@gmail.com';
+
+    sendEmail(emailTo,subject,body)
+}
+
+$('#submit').click(()=>{
+    getDetails()
+})
+
+
     
