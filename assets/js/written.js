@@ -128,7 +128,8 @@ function getDetails() {
     sendEmail(emailTo,subject,body)
 }
 
-$('#submit').click(()=>{
+$('#submit').click((event)=>{
+    event.preventDefault()
     getDetails()
 })
 
