@@ -1,57 +1,58 @@
 const body = document.querySelector("body");
 let scroll = false
-const lis = document.addEventListener("scroll",findScroll)
-function findScroll(){
-				if(window.scrollY > 70) {
-								scroll = true;
-				}else {
-								scroll = false
-				}
-					
+const lis = document.addEventListener("scroll", findScroll)
+function findScroll() {
+	if (window.scrollY > 70) {
+		scroll = true;
+	} else {
+		scroll = false
+	}
+
 }
 
-function TextAnimate(element,speed) {
-				const text = element.text();
-				let index = 0;
-				element.css("display", "block");
-				element.empty();
-				const a = setInterval(()=>{
-								if(index < text.length) {
-										
-										element.append(text[index])
-										
-								}else {
-								   fade.fadeIn(1000)
-										clearInterval(a);
-										removeEventListener(lis,findScroll)
-										if(scroll===false) {
-														window.scroll(0,80)
-										}
-								}
-								
-								index++					
-				}, speed)
+function TextAnimate(element, speed) {
+	const text = element.text();
+	let index = 0;
+	element.css("display", "block");
+	element.empty();
+	const a = setInterval(() => {
+		if (index < text.length) {
+
+			element.append(text[index])
+
+		} else {
+			fade.fadeIn(1000)
+			clearInterval(a);
+			removeEventListener(lis, findScroll)
+			if (scroll === false) {
+				window.scroll(0, 80)
+			}
+		}
+
+		index++
+	}, speed)
 }
 
-$(document).ready(()=>{
-const intro = $("article p:first");
-intro.css("display", "none");
+$(document).ready(() => {
+	const intro = $("article p:first");
+	intro.css("display", "none");
 
-setTimeout(()=>{
+	setTimeout(() => {
 
-		TextAnimate(intro,110)
-		},3000)
-    
-    })
+		TextAnimate(intro, 110)
+	}, 3000)
+	playMusic()
+})
 
 //function that plays the audio
 function playMusic() {
-				const audio = new Audio('../VoiceOver.mp3')
-				audio.currentTime = 0;
-				audio.play()
+	// const audio = new Audio('../VoiceOver.mp3')
+	const audio = document.getElementById("voiceOver");
+	audio.currentTime = 6;
+	audio.play()
 }
 
-playMusic()
+
 
 //handling the size of the image
 
@@ -66,72 +67,73 @@ fade.hide()
 
 //setting up the fadein on the projects
 const pos = {
-				right:"70%",
-				left: "-70%",
+	right: "70%",
+	left: "-70%",
 }
-    
+
 const projects = $('[data-side]');
 let options = {
 
-  root: null, // relative to document viewport 
+	root: null, // relative to document viewport 
 
-  rootMargin: '0px', // margin around root. Values are similar to css property. Unitless values not allowed
+	rootMargin: '0px', // margin around root. Values are similar to css property. Unitless values not allowed
 
-  threshold: 0 // visible amount of item shown in relation to root
+	threshold: 0 // visible amount of item shown in relation to root
 
 };
 
 
 
-const  observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
 
-      entries.forEach(entry => {
-      
-       var element =$(entry.target);
-       let side = element.attr("data-side")
-       
-      
-        if(entry.intersectionRatio > 0) {       
-           
-           element.addClass("animate");
-           setTimeout(()=>{          				element.css("transform","translatex(0%)")
-           		element.css("opacity","1")
-           },600)
-                }
-        else {
-                    
-         element.removeClass("animate"); element.css("transform",`translatex(${pos[side]})`);
-         element.css("opacity",".1")
-              }
-          })
+	entries.forEach(entry => {
 
-        }, options)
+		var element = $(entry.target);
+		let side = element.attr("data-side")
 
- projects.each( (index, project)=> {
-       observer.observe(project)
-       
-       
- 
-   })
-   
-   
-   
-function sendEmail(emailTo,subject,body) {
-    window.open(`mailto:${emailTo}?subject=${subject}&body=${body}`);
-}
 
-function getDetails() {
-    const subject = $("#subject").val(),
-        body = $("#message").val()
-        emailTo = 'winninggodspower@gmail.com';
+		if (entry.intersectionRatio > 0) {
 
-    sendEmail(emailTo,subject,body)
-}
+			element.addClass("animate");
+			setTimeout(() => {
+				element.css("transform", "translatex(0%)")
+				element.css("opacity", "1")
+			}, 600)
+		}
+		else {
 
-$('#submit').click((event)=>{
-    event.preventDefault()
-    getDetails()
+			element.removeClass("animate"); element.css("transform", `translatex(${pos[side]})`);
+			element.css("opacity", ".1")
+		}
+	})
+
+}, options)
+
+projects.each((index, project) => {
+	observer.observe(project)
+
+
+
 })
 
 
-    
+
+function sendEmail(emailTo, subject, body) {
+	window.open(`mailto:${emailTo}?subject=${subject}&body=${body}`);
+}
+
+function getDetails() {
+	const subject = $("#subject").val(),
+		body = $("#message").val()
+	emailTo = 'winninggodspower@gmail.com';
+
+	sendEmail(emailTo, subject, body)
+}
+
+$('#submit').click((event) => {
+	event.preventDefault()
+	getDetails()
+})
+
+
+

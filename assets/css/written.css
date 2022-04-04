@@ -1,19 +1,11 @@
-#project div img{
-				width: 100%;
-				margin: auto;
+body{
+	overflow-x: hidden !important;
 }
 
-#project{
-				width: 100vw;
-				display: grid !important;
-				grid-template-column: 45% 20% 20% !important;
-				color: red !important;
-				
+h1,h2,img,nav,span,strong{
+	overflow-y: none !important;
 }
 
-h1{
-				margin: 0%;
+a img{
+	aspect-ratio: 383.34/268.54 !important;
 }
-
-
-
